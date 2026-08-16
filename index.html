@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MZ Arquitetura – Aprovação de Projetos | Alvarás e Habite-se</title>
+    <meta name="description" content="Arquiteto especializado em aprovação de projetos para alvarás de construção, regularização e habite-se." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ========== VARIÁVEIS ========== */
+        :root {
+            --laranja: #fa9716;
+            --laranja-escuro: #e0850a;
+            --laranja-suave: #fef0db;
+            --azul: #2596be;
+            --azul-escuro: #1c7a9e;
+            --azul-muito-escuro: #0f4c66;
+            --bg-claro: #f5f8fa;
+            --bg: #ffffff;
+            --texto: #2d2d2d;
+            --texto-claro: #5a5a5a;
+            --card-bg: #ffffff;
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            --footer-bg: #111;
+            --header-bg: #fff;
+            --border-color: rgba(0,0,0,0.08);
+            --faq-bg: #f9f9f9;
+            --transition: 0.3s ease;
+        }
+
+        .dark-mode {
+            --bg: #1a1a2e;
+            --bg-claro: #16213e;
+            --texto: #e0e0e0;
+            --texto-claro: #b0b0b0;
+            --card-bg: #0f3460;
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            --footer-bg: #0a0a1a;
+            --header-bg: #16213e;
+            --border-color: rgba(255,255,255,0.1);
+            --faq-bg: #1a1a3e;
+        }
+
+        /* ========== RESET & BASE ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--texto);
+            background: var(--bg);
+            line-height: 1.6;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition);
+            border: none;
+            text-align: center;
+        }
+        .btn-primary {
+            background: var(--laranja);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--laranja-escuro);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(250, 151, 22, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
+        }
+        .btn-azul {
+            background: var(--azul);
+            color: #fff;
+        }
+        .btn-azul:hover {
+            background: var(--azul-escuro);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 150, 190, 0.4);
+        }
+
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--laranja);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--azul-muito-escuro);
+            margin-bottom: 16px;
+            transition: color var(--transition);
+        }
+        .dark-mode .section-title { color: var(--laranja); }
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--texto-claro);
+            max-width: 680px;
+            margin-bottom: 40px;
+        }
+
+        /* ========== ANIMAÇÕES ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.85);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: var(--header-bg);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background var(--transition);
+        }
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--azul-muito-escuro);
+            transition: color var(--transition);
+        }
+        .dark-mode .logo { color: #fff; }
+        .logo span { color: var(--laranja); }
+        .logo small {
+            font-size: 0.7rem;
+            font-weight: 400;
+            display: block;
+            color: #888;
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--texto);
+            transition: color var(--transition);
+        }
+        .nav-links a:hover { color: var(--laranja); }
+        .nav-cta {
+            background: var(--laranja);
+            color: #fff !important;
+            padding: 10px 24px;
+            border-radius: 6px;
+        }
+        .nav-cta:hover { background: var(--laranja-escuro) !important; }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--azul-muito-escuro);
+            border-radius: 2px;
+            transition: background var(--transition);
+        }
+        .dark-mode .menu-toggle span { background: #fff; }
+
+        /* Dark Mode Toggle */
+        .dark-toggle {
+            background: none;
+            border: 2px solid var(--laranja);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--laranja);
+            transition: all var(--transition);
+        }
+        .dark-toggle:hover {
+            background: var(--laranja);
+            color: #fff;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--azul-muito-escuro), var(--azul-escuro));
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+        }
+        .hero-content h1 span { color: var(--laranja); }
+        .hero-content .hero-sub {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(250, 151, 22, 0.2);
+            border: 1px solid rgba(250, 151, 22, 0.3);
+            color: var(--laranja);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .hero-stats div { text-align: center; }
+        .hero-stats strong {
+            display: block;
+            font-size: 2rem;
+            color: var(--laranja);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-stats span {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .hero-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 40px 32px;
+            width: 100%;
+            max-width: 420px;
+        }
+        .hero-card h3 { color: #fff; margin-bottom: 16px; font-size: 1.2rem; }
+        .hero-card ul { list-style: none; }
+        .hero-card li {
+            color: rgba(255,255,255,0.8);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        .hero-card li::before {
+            content: '✓';
+            color: var(--laranja);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .hero-card .btn { width: 100%; margin-top: 20px; }
+
+        /* ========== SERVIÇOS ========== */
+        .servicos { padding: 100px 0; background: var(--bg); transition: background var(--transition); }
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+        .servico-card {
+            background: var(--bg-claro);
+            padding: 36px 28px;
+            border-radius: 16px;
+            transition: all var(--transition);
+            border: 1px solid transparent;
+        }
+        .servico-card:hover {
+            border-color: var(--laranja);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+        .servico-card .icon { font-size: 2.2rem; margin-bottom: 16px; display: block; }
+        .servico-card h3 { font-size: 1.25rem; color: var(--azul-muito-escuro); margin-bottom: 10px; transition: color var(--transition); }
+        .dark-mode .servico-card h3 { color: var(--laranja); }
+        .servico-card p { color: var(--texto-claro); font-size: 0.95rem; }
+
+        /* ========== COMO FUNCIONA ========== */
+        .como-funciona { padding: 100px 0; background: var(--bg-claro); transition: background var(--transition); }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            counter-reset: step;
+        }
+        .step {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--card-shadow);
+            transition: background var(--transition), box-shadow var(--transition);
+        }
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2.8rem;
+            color: rgba(250, 151, 22, 0.12);
+            position: absolute;
+            top: 12px;
+            right: 20px;
+        }
+        .step .step-icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .step h3 { font-size: 1.1rem; color: var(--azul-muito-escuro); margin-bottom: 8px; transition: color var(--transition); }
+        .dark-mode .step h3 { color: var(--laranja); }
+        .step p { font-size: 0.9rem; color: #666; }
+
+        /* ========== SOBRE ========== */
+        .sobre { padding: 100px 0; background: var(--bg); transition: background var(--transition); }
+        .sobre .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .sobre-visual {
+            background: linear-gradient(135deg, var(--azul-muito-escuro), var(--azul-escuro));
+            border-radius: 20px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .sobre-visual .avatar-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            color: #fff;
+        }
+        .sobre-visual .avatar-placeholder .circle {
+            width: 100px;
+            height: 100px;
+            background: var(--laranja);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .sobre-visual .avatar-placeholder h3 { color: #fff; font-size: 1.2rem; }
+        .sobre-visual .avatar-placeholder span { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+        .sobre-text h2 { color: var(--azul-muito-escuro); transition: color var(--transition); }
+        .dark-mode .sobre-text h2 { color: var(--laranja); }
+        .sobre-text p { color: var(--texto-claro); margin-bottom: 20px; }
+
+        /* ========== DEPOIMENTOS / CARROSSEL ========== */
+        .depoimentos { padding: 100px 0; background: var(--bg-claro); transition: background var(--transition); }
+        .carrossel-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .carrossel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carrossel-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            padding: 0 4px;
+        }
+        .depo-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+            transition: background var(--transition), box-shadow var(--transition);
+        }
+        .depo-card .stars { color: var(--laranja); font-size: 1.2rem; margin-bottom: 12px; }
+        .depo-card blockquote {
+            font-style: italic;
+            color: var(--texto);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .depo-card .author { display: flex; align-items: center; gap: 12px; }
+        .depo-card .author .avatar {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: var(--azul);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .depo-card .author strong { font-size: 0.95rem; color: var(--azul-muito-escuro); transition: color var(--transition); }
+        .dark-mode .depo-card .author strong { color: var(--laranja); }
+        .depo-card .author span { font-size: 0.8rem; color: #888; }
+
+        .carrossel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 32px;
+        }
+        .carrossel-dot {
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: rgba(250, 151, 22, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .carrossel-dot.active {
+            background: var(--laranja);
+            transform: scale(1.2);
+        }
+        .carrossel-btn {
+            background: var(--laranja);
+            color: #fff;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carrossel-btn:hover { background: var(--laranja-escuro); transform: scale(1.1); }
+        .carrossel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        /* Avaliações Google */
+        .google-reviews {
+            margin-top: 60px;
+            text-align: center;
+        }
+        .google-reviews .google-stars {
+            font-size: 2.5rem;
+            color: var(--laranja);
+            margin-bottom: 8px;
+        }
+        .google-reviews .google-rating {
+            font-size: 1.2rem;
+            color: var(--texto);
+            font-weight: 600;
+        }
+        .google-reviews .google-count {
+            color: var(--texto-claro);
+            font-size: 0.95rem;
+        }
+        .google-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-top: 16px;
+            transition: background var(--transition);
+        }
+        .google-badge i { color: #4285F4; font-size: 1.5rem; }
+
+        /* ========== FAQ ACORDEÃO ========== */
+        .faq-section { padding: 100px 0; background: var(--bg); transition: background var(--transition); }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            background: var(--faq-bg);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: background var(--transition);
+        }
+        .faq-question {
+            padding: 20px 28px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--azul-muito-escuro);
+            transition: color var(--transition);
+        }
+        .dark-mode .faq-question { color: var(--laranja); }
+        .faq-question i {
+            transition: transform var(--transition);
+            color: var(--laranja);
+        }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 28px;
+            color: var(--texto-claro);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 28px 20px;
+        }
+
+        /* ========== AGENDAMENTO ONLINE ========== */
+        .agendamento { padding: 100px 0; background: var(--bg-claro); transition: background var(--transition); }
+        .agendamento-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .calendario-placeholder {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+            transition: background var(--transition), box-shadow var(--transition);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .calendario-placeholder i {
+            font-size: 4rem;
+            color: var(--laranja);
+            margin-bottom: 16px;
+        }
+        .calendario-placeholder h3 {
+            color: var(--azul-muito-escuro);
+            margin-bottom: 8px;
+            transition: color var(--transition);
+        }
+        .dark-mode .calendario-placeholder h3 { color: var(--laranja); }
+        .calendario-placeholder p { color: var(--texto-claro); max-width: 300px; }
+
+        /* ========== FORMULÁRIO DE CONTATO ========== */
+        .form-contato {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            box-shadow: var(--card-shadow);
+            transition: background var(--transition), box-shadow var(--transition);
+        }
+        .form-contato h3 {
+            color: var(--azul-muito-escuro);
+            margin-bottom: 24px;
+            font-size: 1.3rem;
+            transition: color var(--transition);
+        }
+        .dark-mode .form-contato h3 { color: var(--laranja); }
+        .form-group { margin-bottom: 16px; }
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--texto);
+            margin-bottom: 4px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            background: var(--bg);
+            color: var(--texto);
+            transition: all var(--transition);
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--laranja);
+            box-shadow: 0 0 0 3px rgba(250, 151, 22, 0.15);
+        }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        /* ========== MAPA ========== */
+        .mapa-section { padding: 100px 0; background: var(--bg); transition: background var(--transition); }
+        .mapa-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            height: 400px;
+            position: relative;
+        }
+        .mapa-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .mapa-info {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .mapa-info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--texto);
+            cursor: pointer;
+            transition: color var(--transition);
+        }
+        .mapa-info-item i { color: var(--laranja); font-size: 1.2rem; }
+        .mapa-info-item:hover { color: var(--laranja); }
+        .copiado-msg {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            background: var(--azul-muito-escuro);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .copiado-msg.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== CTA ========== */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--azul-muito-escuro), var(--azul-escuro));
+            color: #fff;
+            text-align: center;
+        }
+        .cta h2 { font-size: 2.4rem; margin-bottom: 12px; }
+        .cta p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+        .cta .btn { font-size: 1.1rem; padding: 16px 48px; }
+        .cta .btn-primary { background: var(--laranja); }
+        .cta .btn-primary:hover { background: var(--laranja-escuro); }
+        .cta-contact {
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+        .cta-contact a { color: var(--laranja); cursor: pointer; }
+        .cta-contact a:hover { text-decoration: underline; }
+        .cta-contact i { margin-right: 6px; }
+
+        /* ========== WHATSAPP FLOAT ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #25D366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all var(--transition);
+            text-decoration: none;
+            animation: pulse-whats 2s infinite;
+        }
+        @keyframes pulse-whats {
+            0% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7); }
+            100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Botão ligar */
+        .call-float {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            background: var(--azul);
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 20px rgba(37, 150, 190, 0.4);
+            z-index: 998;
+            transition: all var(--transition);
+            text-decoration: none;
+        }
+        .call-float:hover {
+            transform: scale(1.1);
+            background: var(--azul-escuro);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--footer-bg);
+            color: rgba(255,255,255,0.6);
+            padding: 40px 0;
+            font-size: 0.85rem;
+            transition: background var(--transition);
+        }
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer .logo { color: #fff; }
+        .footer .logo span { color: var(--laranja); }
+        .footer .logo small { color: rgba(255,255,255,0.4); }
+
+        /* ========== RESPONSIVO ========== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--header-bg);
+                flex-direction: column;
+                padding: 24px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                gap: 16px;
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+
+            .hero { padding: 120px 0 60px; }
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            .hero-card { max-width: 100%; }
+            .section-title { font-size: 1.7rem; }
+            .sobre .container { grid-template-columns: 1fr; }
+            .agendamento-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .carrossel-slide { grid-template-columns: 1fr; }
+            .cta h2 { font-size: 1.8rem; }
+            .footer .container { flex-direction: column; text-align: center; }
+            .mapa-info { flex-direction: column; align-items: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 1.6rem; }
+            .hero-stats strong { font-size: 1.5rem; }
+            .btn { padding: 12px 28px; font-size: 0.9rem; }
+            .whatsapp-float, .call-float { width: 50px; height: 50px; font-size: 1.3rem; }
+            .call-float { bottom: 90px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== WHATSAPP FLOAT ===== -->
+    <a href="https://wa.me/5511999998888?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20aprovação%20de%20projeto." 
+       target="_blank" 
+       class="whatsapp-float" 
+       aria-label="Fale conosco pelo WhatsApp"
+       title="Fale pelo WhatsApp">
+        💬
+    </a>
+
+    <!-- ===== BOTÃO LIGAR ===== -->
+    <a href="tel:+5511999998888" 
+       class="call-float" 
+       aria-label="Ligue para nós"
+       title="Ligue agora">
+        📞
+    </a>
+
+    <!-- ===== AVISO DE COPIA ===== -->
+    <div class="copiado-msg" id="copiadoMsg">📋 Endereço copiado!</div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#" class="logo">
+                MZ<span>Arquitetura</span>
+                <small>Aprovação & Regularização</small>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#agendamento" class="nav-cta">Agendar</a></li>
+                    <li>
+                        <button class="dark-toggle" id="darkToggle" title="Alternar modo escuro">
+                            🌙
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content fade-in-left">
+                <span class="hero-badge">✓ Especialista em Aprovação</span>
+                <h1>
+                    Sua <span>regularização</span> e<br />
+                    alvará sem burocracia
+                </h1>
+                <p class="hero-sub">
+                    Arquitetura focada em aprovação de projetos para alvarás de construção,
+                    reforma, regularização e obtenção do habite-se.
+                </p>
+                <p>
+                    Mais de <strong>15 anos</strong> de experiência em processos junto às
+                    prefeituras e órgãos públicos. Do levantamento à aprovação final,
+                    cuidamos de tudo para você.
+                </p>
+                <div class="hero-actions">
+                    <a href="#agendamento" class="btn btn-primary">📅 Agendar Consultoria</a>
+                    <a href="tel:+5511999998888" class="btn btn-outline">📞 Ligar Agora</a>
+                </div>
+                <div class="hero-stats">
+                    <div>
+                        <strong>520+</strong>
+                        <span>Projetos Aprovados</span>
+                    </div>
+                    <div>
+                        <strong>97%</strong>
+                        <span>Aprovação na 1ª</span>
+                    </div>
+                    <div>
+                        <strong>15+</strong>
+                        <span>Anos de Experiência</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual fade-in-right">
+                <div class="hero-card">
+                    <h3>🛠️ Serviços Mais Solicitados</h3>
+                    <ul>
+                        <li>Alvará de Construção / Reforma</li>
+                        <li>Habite-se (Certidão de Conclusão)</li>
+                        <li>Regularização de Imóveis</li>
+                        <li>Projeto Legal / Arquitetônico</li>
+                        <li>Desmembramento / Unificação</li>
+                        <li>Consultoria Técnica</li>
+                    </ul>
+                    <a href="#servicos" class="btn btn-outline">Ver Todos os Serviços</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVIÇOS ===== -->
+    <section class="servicos" id="servicos">
+        <div class="container">
+            <div class="fade-in">
+                <p class="section-subtitle">Nossos Serviços</p>
+                <h2 class="section-title">Soluções completas em aprovação de projetos</h2>
+                <p class="section-desc">
+                    Cuidamos de todo o processo burocrático e técnico para que seu imóvel
+                    fique 100% regularizado perante a prefeitura.
+                </p>
+            </div>
+            <div class="servicos-grid">
+                <div class="servico-card scale-in"><span class="icon">📐</span><h3>Projeto Arquitetônico Legal</h3><p>Plantas, cortes, fachadas e memorial descritivo conforme as normas técnicas e legislação municipal.</p></div>
+                <div class="servico-card scale-in"><span class="icon">🏛️</span><h3>Alvará de Construção</h3><p>Obtenção da licença para construir ou reformar, com toda a documentação necessária junto à prefeitura.</p></div>
+                <div class="servico-card scale-in"><span class="icon">✅</span><h3>Habite-se / Certidão de Conclusão</h3><p>Regularização final da obra para emissão do habite-se, permitindo a escritura definitiva do imóvel.</p></div>
+                <div class="servico-card scale-in"><span class="icon">🔄</span><h3>Regularização de Imóveis</h3><p>Legalização de construções existentes sem aprovação, com adequação à legislação atual.</p></div>
+                <div class="servico-card scale-in"><span class="icon">📋</span><h3>Desmembramento / Unificação</h3><p>Aprovação de loteamentos, desmembramento ou unificação de terrenos junto aos órgãos competentes.</p></div>
+                <div class="servico-card scale-in"><span class="icon">🤝</span><h3>Consultoria e Acompanhamento</h3><p>Assessoria completa em processos de aprovação, respostas a exigências e prazos municipais.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMO FUNCIONA ===== -->
+    <section class="como-funciona" id="como-funciona">
+        <div class="container">
+            <div class="fade-in">
+                <p class="section-subtitle">Processo Simplificado</p>
+                <h2 class="section-title">Como funciona o serviço</h2>
+                <p class="section-desc">Metodologia clara e transparente. Do diagnóstico inicial à entrega do documento aprovado.</p>
+            </div>
+            <div class="steps">
+                <div class="step scale-in"><div class="step-icon">📞</div><h3>1. Diagnóstico</h3><p>Conversamos sobre seu imóvel e objetivos. Analisamos a documentação existente e a viabilidade.</p></div>
+                <div class="step scale-in"><div class="step-icon">📏</div><h3>2. Levantamento</h3><p>Vistoria técnica, medições e levantamento cadastral do imóvel para dar base ao projeto.</p></div>
+                <div class="step scale-in"><div class="step-icon">📄</div><h3>3. Projeto Legal</h3><p>Elaboração do projeto arquitetônico conforme legislação municipal e normas técnicas.</p></div>
+                <div class="step scale-in"><div class="step-icon">🏛️</div><h3>4. Protocolo & Aprovação</h3><p>Protocolo na prefeitura, acompanhamento do processo e resposta a exigências até a aprovação.</p></div>
+                <div class="step scale-in"><div class="step-icon">🎯</div><h3>5. Entrega</h3><p>Alvará ou habite-se em mãos. Imóvel 100% regularizado e seguro.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOBRE ===== -->
+    <section class="sobre" id="sobre">
+        <div class="container">
+            <div class="sobre-visual fade-in-left">
+                <div class="avatar-placeholder">
+                    <div class="circle">MZ</div>
+                    <h3>Marcelo Zanon</h3>
+                    <span>Arquiteto e Urbanista | CAU A123456-7</span>
+                </div>
+            </div>
+            <div class="sobre-text fade-in-right">
+                <p class="section-subtitle">Sobre o Profissional</p>
+                <h2 class="section-title">Arquiteto especialista em aprovação</h2>
+                <p>Sou <strong>Marcelo Zanon</strong>, arquiteto e urbanista com mais de <strong>15 anos</strong> de experiência exclusiva em aprovação de projetos para alvarás de construção, reforma e regularização de imóveis.</p>
+                <p>Já atuei em mais de <strong>520 processos</strong> junto a prefeituras de São Paulo, Guarulhos, Osasco e Santo André, com índice de <strong>97% de aprovação na primeira submissão</strong>.</p>
+                <p>Meu compromisso é transformar a burocracia em tranquilidade para você. Do projeto à aprovação final, estou ao seu lado em cada etapa.</p>
+                <a href="#agendamento" class="btn btn-primary">📅 Agendar Consultoria</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DEPOIMENTOS COM CARROSSEL ===== -->
+    <section class="depoimentos" id="depoimentos">
+        <div class="container">
+            <div class="fade-in">
+                <p class="section-subtitle">Depoimentos</p>
+                <h2 class="section-title">O que nossos clientes dizem</h2>
+                <p class="section-desc">Histórias reais de quem conseguiu regularizar seu imóvel com agilidade e segurança.</p>
+            </div>
+
+            <div class="carrossel-wrapper">
+                <div class="carrossel-track" id="carrosselTrack">
+                    <!-- Slide 1 -->
+                    <div class="carrossel-slide">
+                        <div class="depo-card">
+                            <div class="stars">★★★★★</div>
+                            <blockquote>"Tentei por conta própria e não consegui. O Marcelo pegou meu processo já complicado e resolveu tudo em 3 meses. Habite-se aprovado sem estresse. Recomendo demais!"</blockquote>
+                            <div class="author"><div class="avatar">AM</div><div><strong>Ana Mendes</strong><span>• Jardim Paulista, SP</span></div></div>
+                        </div>
+                        <div class="depo-card">
+                            <div class="stars">★★★★★</div>
+                            <blockquote>"Precisava do alvará para minha clínica de estética. O profissionalismo e a agilidade foram impressionantes. Em 45 dias estava tudo aprovado. Nota 10!"</blockquote>
+                            <div class="author"><div class="avatar">DR</div><div><strong>Dra. Renata Oliveira</strong><span>• Pinheiros, SP</span></div></div>
+                        </div>
+                        <div class="depo-card">
+                            <div class="stars">★★★★★</div>
+                            <blockquote>"Comprei um imóvel que estava irregular há mais de 10 anos. O Marcelo fez todo o levantamento, projeto e regularização. Hoje tenho escritura e posso dormir tranquilo."</blockquote>
+                            <div class="author"><div class="avatar">JL</div><div><strong>José Lopes</strong><span>• Santo Amaro, SP</span></div></div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carrossel-slide">
+                        <div class="depo-card">
+                            <div class="stars">★★★★★</div>
+                            <blockquote>"Excelente profissional! Resolveu a regularização do meu sobrado em 60 dias. Preço justo e muito conhecimento técnico. Superou minhas expectativas."</blockquote>
+                            <div class="author"><div class="avatar">CS</div><div><strong>Carlos Silva</strong><span>• Moema, SP</span></div></div>
+                        </div>
+                        <div class="depo-card">
+                            <div class="stars">★★★★★</div>
+                            <blockquote>"O Marcelo salvou meu negócio! Consegui o alvará para minha loja depois de 2 anos tentando. Profissional nota 1000. Indico de olhos fechados."</blockquote>
+                            <div class="author"><div class="avatar">FP</div><div><strong>Fernanda Porto</strong><span>• Vila Mariana, SP</span></div></div>
+                        </div>
+                        <div class="depo-card">
+                            <div class="stars">★★★★★</div>
+                            <blockquote>"Serviço rápido, transparente e com total acompanhamento. O projeto foi aprovado na primeira tentativa. Economizei tempo e dinheiro. Muito obrigado!"</blockquote>
+                            <div class="author"><div class="avatar">RM</div><div><strong>Ricardo Mendes</strong><span>• Tatuapé, SP</span></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carrossel-controls">
+                <button class="carrossel-btn" id="prevSlide" aria-label="Anterior">‹</button>
+                <button class="carrossel-btn" id="nextSlide" aria-label="Próximo">›</button>
+            </div>
+            <div class="carrossel-nav" id="carrosselNav">
+                <button class="carrossel-dot active" data-slide="0"></button>
+                <button class="carrossel-dot" data-slide="1"></button>
+            </div>
+
+            <!-- Google Reviews -->
+            <div class="google-reviews fade-in">
+                <div class="google-badge">
+                    <i class="fab fa-google"></i>
+                    <div>
+                        <div class="google-stars">★★★★★</div>
+                        <div class="google-rating">4.9 de 5 estrelas</div>
+                        <div class="google-count">Baseado em 48 avaliações no Google</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="fade-in">
+                <p class="section-subtitle">FAQ</p>
+                <h2 class="section-title">Perguntas frequentes</h2>
+                <p class="section-desc">Tire suas principais dúvidas sobre aprovação de projetos e regularização de imóveis.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Quanto tempo leva para aprovar um projeto?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">O prazo médio varia de 30 a 90 dias, dependendo da complexidade do projeto e da agilidade da prefeitura. Projetos simples podem ser aprovados em até 45 dias.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Quanto custa o serviço de aprovação?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">O valor depende do porte do imóvel, da complexidade do projeto e da cidade. Oferecemos orçamento gratuito e personalizado após uma análise inicial sem compromisso.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Meu imóvel está irregular, ainda dá tempo de regularizar?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Sim! A maioria das cidades permite a regularização de imóveis construídos sem aprovação, desde que atendam aos requisitos de segurança e habitabilidade. Quanto antes começar, melhor.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Preciso ter a escritura para regularizar?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Não necessariamente. Podemos iniciar o processo com outros documentos, como contrato de compra e venda ou posse. Cada caso é analisado individualmente.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Vocês atendem em toda a cidade de São Paulo?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Atendemos toda a Grande São Paulo, incluindo capital, Guarulhos, Osasco, Santo André, São Bernardo, São Caetano e diversos municípios da região metropolitana.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== AGENDAMENTO ONLINE + FORMULÁRIO ===== -->
+    <section class="agendamento" id="agendamento">
+        <div class="container">
+            <div class="fade-in">
+                <p class="section-subtitle">Agendamento</p>
+                <h2 class="section-title">Agende sua consultoria gratuita</h2>
+                <p class="section-desc">Escolha o melhor horário e receba uma análise preliminar do seu caso sem custo.</p>
+            </div>
+            <div class="agendamento-grid">
+                <div class="calendario-placeholder scale-in">
+                    <i class="far fa-calendar-alt"></i>
+                    <h3>Agende online</h3>
+                    <p>Clique no botão abaixo para escolher o melhor dia e horário para sua consultoria gratuita.</p>
+                    <br />
+                    <a href="#" class="btn btn-primary" onclick="alert('🔗 Aqui você integraria um calendário como Calendly, Google Agenda ou similar.'); return false;">
+                        📅 Escolher Horário
+                    </a>
+                    <p style="margin-top: 12px; font-size: 0.85rem;">Ou ligue: <strong>(11) 99999-8888</strong></p>
+                </div>
+                <div class="form-contato scale-in">
+                    <h3>📋 Solicitar Orçamento</h3>
+                    <form id="formContato" onsubmit="event.preventDefault(); alert('✅ Mensagem enviada com sucesso! Entraremos em contato em até 24h.'); this.reset();">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nome *</label>
+                                <input type="text" required placeholder="Seu nome completo" />
+                            </div>
+                            <div class="form-group">
+                                <label>Telefone *</label>
+                                <input type="tel" required placeholder="(11) 99999-8888" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <input type="email" placeholder="seu@email.com" />
+                            </div>
+                            <div class="form-group">
+                                <label>Tipo de serviço *</label>
+                                <select required>
+                                    <option value="">Selecione...</option>
+                                    <option>Alvará de Construção</option>
+                                    <option>Habite-se</option>
+                                    <option>Regularização de Imóvel</option>
+                                    <option>Projeto Arquitetônico</option>
+                                    <option>Desmembramento</option>
+                                    <option>Consultoria</option>
+                                    <option>Outro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Mensagem</label>
+                            <textarea placeholder="Conte um pouco sobre seu imóvel e o que precisa..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;">Enviar Solicitação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MAPA ===== -->
+    <section class="mapa-section" id="mapa">
+        <div class="container">
+            <div class="fade-in">
+                <p class="section-subtitle">Localização</p>
+                <h2 class="section-title">Onde nos encontrar</h2>
+                <p class="section-desc">Estamos estrategicamente localizados na região central de São Paulo, com fácil acesso.</p>
+            </div>
+            <div class="mapa-wrapper scale-in">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1974902646784!2d-46.6490!3d-23.5610!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8f0b8b5b1%3A0x8f8b8b8b8b8b8b!2sRua+Augusta%2C+1500+-+Consola%C3%A7%C3%A3o%2C+S%C3%A3o+Paulo+-+SP!5e0!3m2!1spt-BR!2sbr!4v1"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Mapa do escritório MZ Arquitetura">
+                </iframe>
+            </div>
+            <div class="mapa-info">
+                <div class="mapa-info-item" onclick="copiarEndereco()" title="Clique para copiar o endereço">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><strong>Rua Augusta, 1500</strong> – Consolação, SP</span>
+                </div>
+                <a href="https://www.google.com/maps/dir//Rua+Augusta+1500+Consolação+São+Paulo" target="_blank" class="mapa-info-item">
+                    <i class="fas fa-directions"></i>
+                    <span>Abrir no Google Maps</span>
+                </a>
+                <a href="tel:+5511999998888" class="mapa-info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span><strong>(11) 99999-8888</strong></span>
+                </a>
+                <div class="mapa-info-item" onclick="copiarEndereco()" style="cursor: pointer;">
+                    <i class="fas fa-copy"></i>
+                    <span>Copiar endereço</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <div class="fade-in">
+                <h2>Solicite seu orçamento gratuito</h2>
+                <p>Sem compromisso. Conte-nos sobre seu imóvel e receba uma análise preliminar e um orçamento personalizado em até 24 horas úteis.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#agendamento" class="btn btn-primary">📅 Agendar Consultoria</a>
+                    <a href="tel:+5511999998888" class="btn btn-outline">📞 Ligar Agora: (11) 99999-8888</a>
+                </div>
+                <div class="cta-contact">
+                    <a href="https://wa.me/5511999998888" target="_blank"><i class="fab fa-whatsapp"></i> <strong>WhatsApp</strong></a>
+                    <a href="tel:+5511999998888"><i class="fas fa-phone-alt"></i> <strong>(11) 99999-8888</strong></a>
+                    <span><i class="fas fa-envelope"></i> marcelo@mzarquitetura.com.br</span>
+                    <a onclick="copiarEndereco()" style="cursor: pointer;"><i class="fas fa-map-marker-alt"></i> Rua Augusta, 1500</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="logo">
+                MZ<span>Arquitetura</span>
+                <small>Aprovação & Regularização</small>
+            </a>
+            <p>© 2025 MZ Arquitetura – Todos os direitos reservados. | CAU: A123456-7</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // ===== MENU MOBILE =====
+        const toggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+
+        // ===== DARK MODE =====
+        const darkToggle = document.getElementById('darkToggle');
+        let darkMode = false;
+        darkToggle.addEventListener('click', () => {
+            darkMode = !darkMode;
+            document.body.classList.toggle('dark-mode', darkMode);
+            darkToggle.textContent = darkMode ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', darkMode);
+        });
+        if (localStorage.getItem('darkMode') === 'true') {
+            darkMode = true;
+            document.body.classList.add('dark-mode');
+            darkToggle.textContent = '☀️';
+        }
+
+        // ===== ANIMAÇÕES SCROLL (Intersection Observer) =====
+        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => observer.observe(el));
+
+        // ===== FAQ ACORDEÃO =====
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // ===== CARROSSEL DE DEPOIMENTOS =====
+        const track = document.getElementById('carrosselTrack');
+        const slides = track.querySelectorAll('.carrossel-slide');
+        const dots = document.querySelectorAll('.carrossel-dot');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            currentSlide = index;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+        }
+
+        document.getElementById('prevSlide').addEventListener('click', () => goToSlide(currentSlide - 1));
+        document.getElementById('nextSlide').addEventListener('click', () => goToSlide(currentSlide + 1));
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.slide)));
+        });
+
+        // Auto-play do carrossel a cada 5 segundos
+        let carrosselInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+        document.querySelector('.carrossel-wrapper').addEventListener('mouseenter', () => clearInterval(carrosselInterval));
+        document.querySelector('.carrossel-wrapper').addEventListener('mouseleave', () => {
+            carrosselInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+        });
+
+        // ===== COPIAR ENDEREÇO =====
+        function copiarEndereco() {
+            const endereco = 'Rua Augusta, 1500 - Consolação, São Paulo - SP, 01304-001';
+            navigator.clipboard.writeText(endereco).then(() => {
+                const msg = document.getElementById('copiadoMsg');
+                msg.classList.add('show');
+                setTimeout(() => msg.classList.remove('show'), 2500);
+            }).catch(() => {
+                // Fallback para navegadores antigos
+                const textArea = document.createElement('textarea');
+                textArea.value = endereco;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                const msg = document.getElementById('copiadoMsg');
+                msg.classList.add('show');
+                setTimeout(() => msg.classList.remove('show'), 2500);
+            });
+        }
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>
